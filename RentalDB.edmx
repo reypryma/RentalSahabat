@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RentalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="RentRecord">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerName" Type="nchar" MaxLength="100" />
+          <Property Name="DateRented" Type="datetime" />
+          <Property Name="DateReturned" Type="datetime" />
+          <Property Name="Cost" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TypeOfStuffBorrowed" Type="int" />
+        </EntityType>
+        <EntityType Name="StuffTypes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NamaBarang" Type="nvarchar" MaxLength="50" />
+          <Property Name="InfoBarang" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <Association Name="FK_RentRecord_StuffTypes">
+          <End Role="StuffTypes" Type="Self.StuffTypes" Multiplicity="0..1" />
+          <End Role="RentRecord" Type="Self.RentRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StuffTypes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="RentRecord">
+              <PropertyRef Name="TypeOfStuffBorrowed" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RentalModelStoreContainer">
+          <EntitySet Name="RentRecord" EntityType="Self.RentRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StuffTypes" EntityType="Self.StuffTypes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_RentRecord_StuffTypes" Association="Self.FK_RentRecord_StuffTypes">
+            <End Role="StuffTypes" EntitySet="StuffTypes" />
+            <End Role="RentRecord" EntitySet="RentRecord" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RentalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="RentRecord">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="DateRented" Type="DateTime" Precision="3" />
+          <Property Name="DateReturned" Type="DateTime" Precision="3" />
+          <Property Name="Cost" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TypeOfStuffBorrowed" Type="Int32" />
+          <NavigationProperty Name="StuffType" Relationship="Self.FK_RentRecord_StuffTypes" FromRole="RentRecord" ToRole="StuffTypes" />
+        </EntityType>
+        <EntityType Name="StuffType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NamaBarang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InfoBarang" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RentRecords" Relationship="Self.FK_RentRecord_StuffTypes" FromRole="StuffTypes" ToRole="RentRecord" />
+        </EntityType>
+        <Association Name="FK_RentRecord_StuffTypes">
+          <End Role="StuffTypes" Type="Self.StuffType" Multiplicity="0..1" />
+          <End Role="RentRecord" Type="Self.RentRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StuffTypes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="RentRecord">
+              <PropertyRef Name="TypeOfStuffBorrowed" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RentalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="RentRecords" EntityType="Self.RentRecord" />
+          <EntitySet Name="StuffTypes" EntityType="Self.StuffType" />
+          <AssociationSet Name="FK_RentRecord_StuffTypes" Association="Self.FK_RentRecord_StuffTypes">
+            <End Role="StuffTypes" EntitySet="StuffTypes" />
+            <End Role="RentRecord" EntitySet="RentRecords" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RentalModelStoreContainer" CdmEntityContainer="RentalEntities">
+          <EntitySetMapping Name="RentRecords">
+            <EntityTypeMapping TypeName="RentalModel.RentRecord">
+              <MappingFragment StoreEntitySet="RentRecord">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="DateRented" ColumnName="DateRented" />
+                <ScalarProperty Name="DateReturned" ColumnName="DateReturned" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="TypeOfStuffBorrowed" ColumnName="TypeOfStuffBorrowed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StuffTypes">
+            <EntityTypeMapping TypeName="RentalModel.StuffType">
+              <MappingFragment StoreEntitySet="StuffTypes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="NamaBarang" ColumnName="NamaBarang" />
+                <ScalarProperty Name="InfoBarang" ColumnName="InfoBarang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
