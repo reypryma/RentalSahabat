@@ -81,6 +81,18 @@
     <Compile Include="ListStuffsForm.Designer.cs">
       <DependentUpon>ListStuffsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListUserForm.Designer.cs">
+      <DependentUpon>ListUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="ManajemenRentalForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,14 +137,36 @@
     <Compile Include="RentRecord.cs">
       <DependentUpon>RentalDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Role.cs">
+      <DependentUpon>RentalDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="StuffType.cs">
       <DependentUpon>RentalDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="UserAddEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserAddEditForm.Designer.cs">
+      <DependentUpon>UserAddEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserData.cs">
+      <DependentUpon>RentalDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserRole.cs">
+      <DependentUpon>RentalDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Utills.cs" />
     <EmbeddedResource Include="AddEditBarangForm.resx">
       <DependentUpon>AddEditBarangForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListStuffsForm.resx">
       <DependentUpon>ListStuffsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListUserForm.resx">
+      <DependentUpon>ListUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManajemenRentalForm.resx">
       <DependentUpon>ManajemenRentalForm.cs</DependentUpon>
@@ -154,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RentalUpdateForm.resx">
       <DependentUpon>RentalUpdateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserAddEditForm.resx">
+      <DependentUpon>UserAddEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

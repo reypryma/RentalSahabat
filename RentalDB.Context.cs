@@ -27,5 +27,8 @@ namespace RentalSahabat
     
         public virtual DbSet<RentRecord> RentRecords { get; set; }
         public virtual DbSet<StuffType> StuffTypes { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<UserData> UserDatas { get; set; }
+        public virtual DbSet<UserRole> UserRoles { get; set; }
     }
 }

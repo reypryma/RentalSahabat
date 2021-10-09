@@ -12,9 +12,30 @@ namespace RentalSahabat
 {
     public partial class RentalMainForm : Form
     {
+        private Login login;
+        private UserRole userRole;
+        private UserData userLogin;
+
         public RentalMainForm()
         {
             InitializeComponent();
+        }
+
+        public RentalMainForm(Login login)
+        {
+            InitializeComponent();
+            this.login = login;
+        }
+
+        public RentalMainForm(Login login, UserRole userRole) : this(login)
+        {
+            this.userRole = userRole;
+        }
+
+        public RentalMainForm(Login login, UserData userLogin) : this(login)
+        {
+            this.userLogin = userLogin;
+            userRole = userLogin.UserRoles.FirstOrDefault();
         }
 
         private void rentalSahabatToolStripMenuItem_Click(object sender, EventArgs e)
@@ -47,7 +68,22 @@ namespace RentalSahabat
 
         private void RentalMainForm_Load(object sender, EventArgs e)
         {
+            txtInformasi.Text = $"Masuk sebagai : {userLogin.username} | {userRole.Role.name}";
 
+            if(!userRole.Role.name.Contains("admin"))
+            {
+                userRentalSahabatToolStripMenuItem.Visible = false;
+            }
+        }
+
+        private void userRentalSahabatToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!Utills.FormIsOpen("ListUserForm"))
+            {
+                ListUserForm listUserForm = new ListUserForm();
+                listUserForm.MdiParent = this;
+                listUserForm.Show();
+            }
         }
     }
 }

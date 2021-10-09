@@ -8,7 +8,12 @@
         <EntityTypeShape EntityType="RentalModel.RentRecord" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="RentalModel.StuffType" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
         <AssociationConnector Association="RentalModel.FK_RentRecord_StuffTypes" ManuallyRouted="false" />
-      </Diagram>
+        <EntityTypeShape EntityType="RentalModel.Role" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="RentalModel.UserData" Width="1.5" PointX="5.25" PointY="3.625" />
+        <EntityTypeShape EntityType="RentalModel.UserRole" Width="1.5" PointX="7.5" PointY="0.625" />
+        <AssociationConnector Association="RentalModel.FK_UserRole_Roles" />
+        <AssociationConnector Association="RentalModel.FK_UserRole_UserData" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

@@ -47,11 +47,13 @@ namespace RentalSahabat
             // 
             // cbTypeRented
             // 
+            this.cbTypeRented.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTypeRented.FormattingEnabled = true;
             this.cbTypeRented.Location = new System.Drawing.Point(512, 132);
             this.cbTypeRented.Name = "cbTypeRented";
             this.cbTypeRented.Size = new System.Drawing.Size(225, 24);
             this.cbTypeRented.TabIndex = 23;
+            this.cbTypeRented.SelectedIndexChanged += new System.EventHandler(this.cbTypeRented_SelectedIndexChanged);
             // 
             // txtCost
             // 

@@ -35,6 +35,8 @@ namespace RentalSahabat
             this.lihatListPeminjamanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.barangYangTersediaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lihatListBarangToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userRentalSahabatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtInformasi = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,10 +45,11 @@ namespace RentalSahabat
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.rentalSahabatToolStripMenuItem,
-            this.barangYangTersediaToolStripMenuItem});
+            this.barangYangTersediaToolStripMenuItem,
+            this.userRentalSahabatToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(975, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(982, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -89,11 +92,28 @@ namespace RentalSahabat
             this.lihatListBarangToolStripMenuItem.Text = "Lihat list barang";
             this.lihatListBarangToolStripMenuItem.Click += new System.EventHandler(this.lihatListBarangToolStripMenuItem_Click);
             // 
+            // userRentalSahabatToolStripMenuItem
+            // 
+            this.userRentalSahabatToolStripMenuItem.Name = "userRentalSahabatToolStripMenuItem";
+            this.userRentalSahabatToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.userRentalSahabatToolStripMenuItem.Text = "User RentalSahabat";
+            this.userRentalSahabatToolStripMenuItem.Click += new System.EventHandler(this.userRentalSahabatToolStripMenuItem_Click);
+            // 
+            // txtInformasi
+            // 
+            this.txtInformasi.AutoSize = true;
+            this.txtInformasi.Location = new System.Drawing.Point(786, 40);
+            this.txtInformasi.Name = "txtInformasi";
+            this.txtInformasi.Size = new System.Drawing.Size(46, 17);
+            this.txtInformasi.TabIndex = 2;
+            this.txtInformasi.Text = "label1";
+            // 
             // RentalMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(975, 504);
+            this.ClientSize = new System.Drawing.Size(982, 440);
+            this.Controls.Add(this.txtInformasi);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -115,5 +135,7 @@ namespace RentalSahabat
         private System.Windows.Forms.ToolStripMenuItem lihatListPeminjamanToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem barangYangTersediaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lihatListBarangToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem userRentalSahabatToolStripMenuItem;
+        private System.Windows.Forms.Label txtInformasi;
     }
 }

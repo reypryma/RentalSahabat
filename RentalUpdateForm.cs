@@ -104,5 +104,10 @@ namespace RentalSahabat
                 //throw;
             }
         }
+
+        private void cbTypeRented_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace RentalSahabat
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new RentalMainForm());
+            Application.Run(new Login());
         }
 
         static void simulasi2()
